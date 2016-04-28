@@ -7,7 +7,10 @@ class Functor f where
 instance Functor Tree where
     fmap = mapT
 
+data I a = I a deriving Show
 
+instance Functor I where
+    fmap f (I x) = I (f x)
 
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe _ Nothing = Nothing
@@ -25,5 +28,6 @@ mapT f (Node l x r) = Node (mapT f l) (f x) (mapT f r)
 
 main :: IO ()
 main = do
-    let t = Node (Node Empty 2 Empty) 1 (Node Empty 3 Empty)
-    print $ fmap (+100) t
+    let i = I 1234
+    print i
+    print $ fmap (*1000) i
