@@ -10,7 +10,7 @@ instance Functor (Reader e) where
     fmap g (Reader f) = Reader (g . f)
 
 get :: Reader e a -> e -> a
-get (Reader f) x = f x
+get (Reader f) = f
 
 main :: IO ()
 main = do
