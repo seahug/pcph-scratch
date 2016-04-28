@@ -1,4 +1,13 @@
 module Main (main) where
+import Prelude hiding (Functor, fmap)
+
+class Functor f where
+    fmap :: (a -> b) -> f a -> f b
+
+instance Functor Tree where
+    fmap = mapT
+
+
 
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe _ Nothing = Nothing
@@ -17,5 +26,4 @@ mapT f (Node l x r) = Node (mapT f l) (f x) (mapT f r)
 main :: IO ()
 main = do
     let t = Node (Node Empty 2 Empty) 1 (Node Empty 3 Empty)
-    print $ sumT t
-    print $ mapT (+100) t
+    print $ fmap (+100) t
