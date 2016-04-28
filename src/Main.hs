@@ -1,17 +1,33 @@
-module Main (main, testFunction) where
+module Main (main) where
+import Prelude hiding (foldr, map, product, sum)
 
-import           Control.Monad (forM_)
-import qualified System.Environment as Env
+-- a.k.a. "null"
+empty :: [a] -> Bool
+empty [] = True
+empty _ = False
 
--- | Minimal function including doctest
--- Examples:
--- >>> testFunction "string"
--- "[[string]]"
-testFunction :: String -> String
-testFunction s = "[[" ++ s ++ "]]"
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f (x : xs) = f x : map f xs
+
+-- a.k.a. "length"
+len :: [a] -> Int
+len [] = 0
+len (_ : xs) = 1 + len xs
+
+sum :: [Int] -> Int
+sum [] = 0
+sum (x : xs) = (+) x (sum xs)
+
+product :: [Double] -> Double
+product [] = 1
+product (x : xs) = (*) x (product xs) 
+
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [] = z
+foldr f z (x : xs) = f x (foldr f z xs)
 
 main :: IO ()
 main = do
-    putStrLn "scratch"
-    args <- Env.getArgs
-    forM_ args $ \arg -> putStrLn $ "arg: " ++ arg
+    print $ foldr (+) 0 [1, 2, 3, 4]
+    print $ foldr (*) 1 [1, 2, 3, 4]
