@@ -1,33 +1,21 @@
 module Main (main) where
-import Prelude hiding (foldr, map, product, sum)
 
--- a.k.a. "null"
-empty :: [a] -> Bool
-empty [] = True
-empty _ = False
+mapMaybe :: (a -> b) -> Maybe a -> Maybe b
+mapMaybe _ Nothing = Nothing
+mapMaybe f (Just a) = Just (f a)
 
-map :: (a -> b) -> [a] -> [b]
-map _ [] = []
-map f (x : xs) = f x : map f xs
+data Tree a = Empty | Node (Tree a) a (Tree a) deriving Show
 
--- a.k.a. "length"
-len :: [a] -> Int
-len [] = 0
-len (_ : xs) = 1 + len xs
+sumT :: Tree Int -> Int
+sumT Empty = 0
+sumT (Node l x r) = sumT l + x + sumT r
 
-sum :: [Int] -> Int
-sum [] = 0
-sum (x : xs) = (+) x (sum xs)
-
-product :: [Double] -> Double
-product [] = 1
-product (x : xs) = (*) x (product xs) 
-
-foldr :: (a -> b -> b) -> b -> [a] -> b
-foldr f z [] = z
-foldr f z (x : xs) = f x (foldr f z xs)
+mapT :: (a -> b) -> Tree a -> Tree b
+mapT _ Empty = Empty
+mapT f (Node l x r) = Node (mapT f l) (f x) (mapT f r)
 
 main :: IO ()
 main = do
-    print $ foldr (+) 0 [1, 2, 3, 4]
-    print $ foldr (*) 1 [1, 2, 3, 4]
+    let t = Node (Node Empty 2 Empty) 1 (Node Empty 3 Empty)
+    print $ sumT t
+    print $ mapT (+100) t
