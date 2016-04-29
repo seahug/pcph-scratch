@@ -2,6 +2,8 @@
 
 module Session4.Recursion where
 
+import Prelude ((+), (*), Bool(..), Double, Int)
+
 -- >>> map (+100) []
 -- []
 -- >>> map (+100) [1, 2, 3, 4]
