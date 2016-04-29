@@ -1,7 +1,6 @@
 -- Part 5
 
-module Main (main) where
-import Prelude hiding (Functor, fmap)
+module Session4.Reader where
 
 class Functor f where
     fmap :: (a -> b) -> f a -> f b

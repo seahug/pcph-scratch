@@ -1,5 +1,6 @@
 module Main (main) where
 
+import           Prelude
 import qualified System.FilePath.Glob as Glob
 import qualified Test.DocTest as DocTest
 

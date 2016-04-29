@@ -1,15 +1,12 @@
 -- Part 3
 
-module Main (main) where
-import Prelude hiding (Functor, fmap)
+module Session4.Functor where
 
 class Functor f where
     fmap :: (a -> b) -> f a -> f b
 
 instance Functor Tree where
     fmap = mapT
-
-
 
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe _ Nothing = Nothing

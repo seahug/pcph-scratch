@@ -1,7 +1,6 @@
 -- Part 4
 
-module Main (main) where
-import Prelude hiding (Functor, fmap)
+module Session4.Identity where
 
 class Functor f where
     fmap :: (a -> b) -> f a -> f b

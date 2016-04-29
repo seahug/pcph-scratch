@@ -1,6 +1,6 @@
 -- Part 2
 
-module Main (main) where
+module Session4.Trees where
 
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe _ Nothing = Nothing
