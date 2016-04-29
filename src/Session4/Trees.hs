@@ -1,3 +1,5 @@
+-- Part 2
+
 module Main (main) where
 
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b

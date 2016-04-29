@@ -1,3 +1,5 @@
+-- Part 1
+
 module Main (main) where
 import Prelude hiding (foldr, map, product, sum)
 

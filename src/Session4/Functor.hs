@@ -1,3 +1,5 @@
+-- Part 3
+
 module Main (main) where
 import Prelude hiding (Functor, fmap)
 
