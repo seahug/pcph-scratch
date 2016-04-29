@@ -10,4 +10,4 @@ SCRIPTDIR=$(dirname $SCRIPTPATH)
 REPODIR=$(dirname $SCRIPTDIR)
 
 cd $REPODIR
-scratch $*
+pcph-scratch $*
