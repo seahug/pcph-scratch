@@ -26,6 +26,8 @@ executable pcph-scratch
                     , Session4.Reader
                     , Session4.Recursion
                     , Session4.Trees
+                    , Session5.Kleisli
+                    , Session5.State
   build-depends:      base >= 4.7 && < 5
 
 test-suite doctests
