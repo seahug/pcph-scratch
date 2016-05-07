@@ -1,8 +1,8 @@
 -- Part 4
 
-module Session4.Identity where
+module Session4.Identity (test) where
 
-import Prelude ((+), (*), ($), Int, Maybe(..), Show)
+import Prelude (IO, Show, return)
 
 data I a = I a deriving Show
 
@@ -15,3 +15,6 @@ class Functor f where
 -- I 1234000
 instance Functor I where
     fmap f (I x) = I (f x)
+
+test :: IO ()
+test = return ()

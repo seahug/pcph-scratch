@@ -1,8 +1,8 @@
 -- Part 3
 
-module Session4.Functor where
+module Session4.Functor (test) where
 
-import Prelude (($), (+), Int, Maybe(..), Show)
+import Prelude (IO, Maybe(..), return)
 
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe _ Nothing = Nothing
@@ -19,3 +19,6 @@ class Functor f where
 -- Just 110
 instance Functor Maybe where
     fmap = mapMaybe
+
+test :: IO ()
+test = return ()

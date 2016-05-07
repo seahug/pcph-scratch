@@ -1,8 +1,8 @@
 -- Part 2
 
-module Session4.Trees where
+module Session4.Trees (test) where
 
-import Prelude (($), (+), Int, Maybe(..), Show)
+import Prelude (($), (+), IO, Int, Show, return)
 
 data Tree a = Empty | Node (Tree a) a (Tree a) deriving Show
 
@@ -31,3 +31,8 @@ class Functor f where
 -- Node (Node Empty 102 Empty) 101 (Node Empty 103 Empty)
 instance Functor Tree where
     fmap = mapT
+
+test :: IO ()
+test = do
+    let _ = sumT $ Node (Node Empty 2 Empty) 1 (Node Empty 3 Empty)
+    return ()

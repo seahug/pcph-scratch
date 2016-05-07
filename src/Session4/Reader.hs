@@ -1,8 +1,8 @@
 -- Part 5
 
-module Session4.Reader where
+module Session4.Reader (test) where
 
-import Prelude ((.), (+), (*))
+import Prelude ((.), (+), (*), IO, Int, return)
 
 data Reader e a = Reader (e -> a)
 
@@ -18,3 +18,8 @@ class Functor f where
 -- 446
 instance Functor (Reader e) where
     fmap g (Reader f) = Reader (g . f)
+
+test :: IO ()
+test = do
+    let _ = get (fmap (*2) (Reader (+100))) 123 :: Int
+    return ()

@@ -1,8 +1,8 @@
 -- Part 1
 
-module Session4.Recursion where
+module Session4.Recursion (test) where
 
-import Prelude ((+), (*), Bool(..), Double, Int)
+import Prelude ((+), (*), Bool(..), Double, IO, Int, return)
 
 -- | empty a.k.a. null
 -- Examples:
@@ -61,5 +61,15 @@ product (x : xs) = (*) x (product xs)
 -- >>> foldr (*) 1 [1, 2, 3, 4]
 -- 24
 foldr :: (a -> b -> b) -> b -> [a] -> b
-foldr f z [] = z
+foldr _ z [] = z
 foldr f z (x : xs) = f x (foldr f z xs)
+
+test :: IO ()
+test = do
+    let _ = foldr (+) (0 :: Int) [1, 2, 3, 4]
+        _ = empty ([1, 2, 3, 4] :: [Int])
+        _ = len ([1, 2, 3, 4] :: [Int])
+        _ = map (+100) [] :: [Int]
+        _ = sum [1, 2, 3, 4]
+        _ = product [1, 2, 3, 4]
+    return ()
